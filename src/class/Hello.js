@@ -5,7 +5,7 @@ class Hello extends React.Component {
     render() {
         return(
             <View>
-                <Text>Olá: {this.props.nome}</Text>
+                <Text>Olá usuário: {this.props.nome}</Text>
             </View>
         )
     }
