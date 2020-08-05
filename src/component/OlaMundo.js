@@ -1,10 +1,23 @@
-import React from 'react';
-import {Text, View} from 'react-native';
+import React, {Component} from 'react';
+import {StyleSheet, Text, View} from 'react-native';
 
-export default function (props) {
-    return (
-        <View>
-            <Text>Olá usuário: {props.nome}</Text>
-        </View>
-    )
+class OlaMundo extends Component {
+    render() {
+        return(
+            <View style={styles.container}>
+                <Text>Olá: {this.props.nome}</Text>
+            </View>
+        )
+    }
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+});
+
+export default OlaMundo;
