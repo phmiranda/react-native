@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-
-import {createDrawerNavigator} from '@react-navigation/drawer';
-import {NavigationContainer} from '@react-navigation/native';
+import {createAppContainer, createBottomTabNavigator, createDrawerNavigator, createStackNavigator} from 'react-navigation';
 
 import OlaMundo from './src/component/OlaMundo';
 import OlaMundo2 from './src/component/OlaMundo2';
@@ -12,20 +10,24 @@ import ChecaNumero from "./src/component/ChecaNumero";
 import Evento from "./src/component/Evento";
 import UsuarioGithub from "./src/component/UsuarioGithub";
 
-const Drawer = createDrawerNavigator();
+const DrawerNavigation = createDrawerNavigator(
+    {
+        OlaMundo: {
+            screen: OlaMundo
+        }
+    },
+    {
+        hideStatusBar: true,
+        drawerBackgroundColor: 'rgba(255,255,255,.9)',
+        overlayColor: '#6b52ae',
+        contentOptions: {
+            activeTintColor: '#fff',
+            activeBackgroundColor: '#6b52ae'
+        }
+    }
+);
 
-export default function App() {
-    return(
-        <NavigationContainer>
-            <Drawer.Navigator initialRouteName="Ola">
-                <Drawer.Screen name="Ola" component={OlaMundo}/>
-                <Drawer.Screen name="Dimensão" component={DimensaoFixa} />
-                <Drawer.Screen name="Github" component={UsuarioGithub}/>
-                <Drawer.Screen name="Evento" component={Evento} />
-            </Drawer.Navigator>
-        </NavigationContainer>
-    );
-}
+const App = createAppContainer(DrawerNavigation);
 
 const styles = StyleSheet.create({
   container: {
@@ -35,3 +37,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+export default App;
